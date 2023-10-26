@@ -13,8 +13,10 @@ public class Main {
 
     public static void main(String[] args) {
        Txt t = new Txt();
-//        System.out.println(t.leer_txt());
-        t.ListaUsuarios().print();
+       System.setProperty("org.graphstream.ui", "swing");
+       GraficarGrafo g = new GraficarGrafo(t.ListaUsuarios());
+       g.mostrar();
+ 
     }
     
 }
