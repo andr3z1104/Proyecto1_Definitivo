@@ -66,8 +66,9 @@ public class Txt {
             Lista relaciones = new Lista();
             for (int j=0;j<data_relations.length;j++){
                 String[] relacion = data_relations[j].split(",");
-                if (user.getName().equals(relacion[0])){
-                    relaciones.insertFinale(relacion[1]);
+                if (("@"+user.getName()).equals(relacion[0])){
+                    String relacionado = relacion[1].substring(2);
+                    relaciones.insertFinale(relacionado);
                 }
             }
             user.setRelaciones(relaciones);

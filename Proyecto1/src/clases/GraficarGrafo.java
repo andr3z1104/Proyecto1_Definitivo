@@ -24,6 +24,7 @@ public class GraficarGrafo {
         Graph g = new SingleGraph("hp");
         Nodo pAux=  ListaUsuarios.getHead();
         Nodo pAux2 = ListaUsuarios.getHead();
+        int n = 0;
         
         while (pAux!=null){
             Usuario u = (Usuario) pAux.getElement();
@@ -37,9 +38,9 @@ public class GraficarGrafo {
             Nodo pAux3 = listaRelaciones.getHead();
 //            System.out.println((String) pAux3.getElement());
             while (pAux3!=null){
-                System.out.println((String) pAux3.getElement());
-                g.addEdge( "HOLA", u.getName(), (String) pAux3.getElement());
+                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement());
                 pAux3=pAux3.getNext();
+                n++;
             }
             pAux2 = pAux2.getNext();
         }
