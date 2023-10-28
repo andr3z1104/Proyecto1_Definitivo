@@ -59,20 +59,22 @@ public class proyecto {
        
        g.print();
        
+       g.insertVertice(1);
+       g.print();
        
        
        
 //       g.print();
 //       g.deleteVertice(1);
-//       g.print();
-       a.addNode("A");
-       a.addNode("B");
-       a.addNode("C");
-       a.addEdge("AB", "A", "B");
-       a.addEdge("BC", "B", "C");
-       Edge edge = a.getEdge("AB");
-       edge.setAttribute("ui.style", "fill-color: red;");
-       a.display();
+////       g.print();
+//       a.addNode("A");
+//       a.addNode("B");
+//       a.addNode("C");
+//       a.addEdge("AB", "A", "B");
+//       a.addEdge("BC", "B", "C");
+//       Edge edge = a.getEdge("AB");
+//       edge.setAttribute("ui.style", "fill-color: red;");
+//       a.display();
 
        
     }

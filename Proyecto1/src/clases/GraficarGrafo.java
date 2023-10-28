@@ -64,8 +64,10 @@ public class GraficarGrafo {
 
         for (int i=0;i< getGrafo().getMatrixAdy().length;i++){
             for (int j=0;j< getGrafo().getMatrixAdy().length;j++){
+                System.out.print(getGrafo().getMatrixAdy()[i][j]);
+                System.out.print(getGrafo().getMatrixAdy().length);
                 if(getGrafo().getMatrixAdy()[i][j]==1){
-                    g.addEdge(Integer.toString(i)+Integer.toString(j), ((Usuario)ListaUsuarios.returnIndexData(i)).getName(), ((Usuario) ListaUsuarios.returnIndexData(j)).getName());
+                    g.addEdge(Integer.toString(i)+Integer.toString(j), ((Usuario)ListaUsuarios.returnIndexData(i)).getName(), ((Usuario) ListaUsuarios.returnIndexData(j)).getName(), true);
                 }
             }
         }
