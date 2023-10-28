@@ -18,41 +18,7 @@ public class GraficarGrafo {
         this.ListaUsuarios = ListaUsuarios;
     }
     
-    
-
-    public Graph returnGraph(Lista ListaUsuarios){
-        Graph g = new SingleGraph("hp");
-        Nodo pAux=  ListaUsuarios.getHead();
-        Nodo pAux2 = ListaUsuarios.getHead();
-        int n = 0;
-        
-        while (pAux!=null){
-            Usuario u = (Usuario) pAux.getElement();
-            g.addNode(u.getName());
-            pAux = pAux.getNext();
-        }
-        
-        while (pAux2!=null){
-            Usuario u = (Usuario) pAux2.getElement();
-            Lista listaRelaciones = u.getRelaciones();
-            Nodo pAux3 = listaRelaciones.getHead();
-//            System.out.println((String) pAux3.getElement());
-            while (pAux3!=null){
-                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement());
-                pAux3=pAux3.getNext();
-                n++;
-            }
-            pAux2 = pAux2.getNext();
-        }
-        return g;
-    } 
-    
-    public void mostrar(){
-        Graph g = returnGraph(ListaUsuarios);
-        g.display();
-}
-            
-            
+             
     /**
      * @return the grafo
      */
@@ -80,6 +46,51 @@ public class GraficarGrafo {
     public void setListaUsuarios(Lista ListaUsuarios) {
         this.ListaUsuarios = ListaUsuarios;
     }
+    
+    
+
+    public Graph returnGraph(Lista ListaUsuarios){
+        Graph g = new SingleGraph("hp");
+        Nodo pAux=  ListaUsuarios.getHead();
+        Nodo pAux2 = ListaUsuarios.getHead();
+        int n = 0;
+        
+        while (pAux!=null){
+            Usuario u = (Usuario) pAux.getElement();
+            g.addNode(u.getName());
+            pAux = pAux.getNext();
+        }
+        
+        while (pAux2!=null){
+            Usuario u = (Usuario) pAux2.getElement();
+            Lista listaRelaciones = u.getRelaciones();
+            Nodo pAux3 = listaRelaciones.getHead();
+            while (pAux3!=null){
+                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement(), true);
+                pAux3=pAux3.getNext();
+                n++;
+            }
+            pAux2 = pAux2.getNext();
+        }
+        return g;
+    } 
+    
+    public void mostrar(){
+        Graph g = returnGraph(ListaUsuarios);
+        g.setAttribute("ui.stylesheet", "node { text-alignment: under; }");
+        
+        for (Node node : g) {
+            node.setAttribute("ui.label", node.getId());
+        }
+         
+        for (Node node : g) {
+            node.setAttribute("ui.style", "text-size: 20;");
+        }
+        
+        g.display();
+}
+            
+   
     
     
     
