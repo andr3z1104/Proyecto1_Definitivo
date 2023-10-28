@@ -25,17 +25,11 @@ public class Main {
        a.mostrar();
        g.deleteVerticeGrafo("mazinger");
        g.print();
+       a.getListaUsuarios().print();
+       a.getGrafo().print();
        a.mostrar();
        
-       
-       
-       Lista ListaRelaciones = new Lista();
-       ListaRelaciones.insertBegin("pepe");
-       g.insertUsuarioGrafo("Isolda", ListaRelaciones);
-       g.printMA();
-       g.print();
-       GraficarGrafo c = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
-       c.mostrar();
+
  
     }
     

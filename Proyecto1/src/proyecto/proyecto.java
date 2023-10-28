@@ -18,6 +18,8 @@ public class proyecto {
        //Txt t = new Txt();
        //System.setProperty("org.graphstream.ui", "org.graphstream.ui.javafx.JavaFXGraphRenderer");
        System.setProperty("org.graphstream.ui", "swing");
+//       Txt t = new Txt();
+//       t.modificarTxt(t.Seleccionar(), t.modificarString(t.leer_txt(t.Seleccionar()), "tuqui33"));
        Graph a = new SingleGraph("hp");
        GRAFO g = new GRAFO(8);
        g.print();
