@@ -111,6 +111,15 @@ public class GrafoDefinitivo {
         
     }
     
+    public void insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
+        
+        Usuario pointer = new Usuario(Usuario);
+        pointer.setRelaciones(ListaRelaciones);
+        getGrafo().insertVertice(1);
+        getListaUsuarios().insertFinale(pointer);
+        completarGrafo();
+    }
+    
     
     
     public void print(){

@@ -27,7 +27,15 @@ public class Main {
        g.print();
        a.mostrar();
        
-       t.modificarTxt(t.Seleccionar(), "hola");
+       
+       
+       Lista ListaRelaciones = new Lista();
+       ListaRelaciones.insertBegin("pepe");
+       g.insertUsuarioGrafo("Isolda", ListaRelaciones);
+       g.printMA();
+       g.print();
+       GraficarGrafo c = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+       c.mostrar();
  
     }
     
