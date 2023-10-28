@@ -84,6 +84,18 @@ public class Txt {
         } 
     }
     
+    public String modificarString(String s, String name){
+        String[] splits = s.split("\n");
+        String new_string = "";
+        for (int i=0;i<splits.length;i++){
+            if (!splits[i].contains(name)){
+                new_string+=splits[i]+"\n";
+            }
+        }
+        
+        return new_string;
+    }
+    
 
 
 }

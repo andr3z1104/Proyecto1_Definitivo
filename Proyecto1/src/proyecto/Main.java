@@ -25,9 +25,10 @@ public class Main {
        a.mostrar();
        g.deleteVerticeGrafo("mazinger");
        g.print();
+       a.getListaUsuarios().print();
+       a.getGrafo().print();
        a.mostrar();
        
-       t.modificarTxt(t.Seleccionar(), "hola");
  
     }
     
