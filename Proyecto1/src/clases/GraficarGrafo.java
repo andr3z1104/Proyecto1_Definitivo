@@ -61,18 +61,6 @@ public class GraficarGrafo {
             g.addNode(u.getName());
             pAux = pAux.getNext();
         }
-        
-//        while (pAux2!=null){
-//            Usuario u = (Usuario) pAux2.getElement();
-//            Lista listaRelaciones = u.getRelaciones();
-//            Nodo pAux3 = listaRelaciones.getHead();
-//            while (pAux3!=null){
-//                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement(), true);
-//                pAux3=pAux3.getNext();
-//                n++;
-//            }
-//            pAux2 = pAux2.getNext();
-//        }
 
         for (int i=0;i< getGrafo().getMatrixAdy().length;i++){
             for (int j=0;j< getGrafo().getMatrixAdy().length;j++){
@@ -97,10 +85,10 @@ public class GraficarGrafo {
         }
         
         g.display();
-}
-            
-   
-    
+    }
+      
+    public void printSubgraph(){}
+        
     
     
 }

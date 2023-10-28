@@ -4,6 +4,7 @@ package clases;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -21,11 +22,10 @@ public class Txt {
         return path;
     }
     
-    public String leer_txt(){
-        Lista ListaUsuarios = new Lista();
+    public String leer_txt(String path){
         String line;
         String usuarios_txt = "";
-        String path = Seleccionar();
+//        String path = Seleccionar();
         File file = new File(path);
         try{
             if (!file.exists()){
@@ -38,13 +38,6 @@ public class Txt {
                         usuarios_txt += line+ "\n";
                     }
                 }
-                
-                if (!"".equals(usuarios_txt)){
-                    String[] usuarios_split= usuarios_txt.split("relaciones");
-                    for (int i=0; i<usuarios_split.length;i++){
-                        
-                    }
-                }
             }
         }catch(Exception err){
             JOptionPane.showMessageDialog(null, err);
@@ -54,20 +47,20 @@ public class Txt {
         
     }
     
-    public Lista ListaUsuarios(){
-        String data = leer_txt();
+    public Lista ListaUsuarios(String path){
+        String data = leer_txt(path);
         Lista ListaUsers = new Lista();
         
         String[] data_split = data.split("relaciones");
         String[] data_users = data_split[0].split("\n");
         String[] data_relations = data_split[1].split("\n");
         for (int i=1; i<data_users.length;i++){
-            Usuario user = new Usuario(data_users[i].substring(1));
+            Usuario user = new Usuario(data_users[i].replace(" ","").replace("@",""));
             Lista relaciones = new Lista();
             for (int j=0;j<data_relations.length;j++){
                 String[] relacion = data_relations[j].split(",");
                 if (("@"+user.getName()).equals(relacion[0])){
-                    String relacionado = relacion[1].substring(2);
+                    String relacionado = relacion[1].replace(" ","").replace("@","");
                     relaciones.insertFinale(relacionado);
                 }
             }
@@ -78,7 +71,18 @@ public class Txt {
         return ListaUsers;
     }
     
-    
+    public void modificarTxt(String path, String data){
+        try { 
+
+            FileWriter output = new FileWriter(path);
+            output.write(data); 
+            output.close(); 
+        } 
+  
+        catch (Exception e) { 
+            e.getStackTrace(); 
+        } 
+    }
     
 
 

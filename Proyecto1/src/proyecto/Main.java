@@ -13,10 +13,12 @@ public class Main {
 
     public static void main(String[] args) {
        Txt t = new Txt();
+       
        System.setProperty("org.graphstream.ui", "swing");
-       GrafoDefinitivo g = new GrafoDefinitivo(t.ListaUsuarios());
-        g.completarGrafo();
+       GrafoDefinitivo g = new GrafoDefinitivo(t.ListaUsuarios(t.Seleccionar()));
+       g.completarGrafo();
        GraficarGrafo a = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+       
       
        g.print();
        g.printMA();
@@ -24,6 +26,8 @@ public class Main {
        g.deleteVerticeGrafo("mazinger");
        g.print();
        a.mostrar();
+       
+       t.modificarTxt(t.Seleccionar(), "hola");
  
     }
     
