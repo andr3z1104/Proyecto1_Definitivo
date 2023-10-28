@@ -14,8 +14,9 @@ public class GraficarGrafo {
     private Lista ListaUsuarios;
 
 
-    public GraficarGrafo(Lista ListaUsuarios) {
+    public GraficarGrafo(Lista ListaUsuarios, GRAFO grafo) {
         this.ListaUsuarios = ListaUsuarios;
+        this.grafo=grafo;
     }
     
              
@@ -61,16 +62,24 @@ public class GraficarGrafo {
             pAux = pAux.getNext();
         }
         
-        while (pAux2!=null){
-            Usuario u = (Usuario) pAux2.getElement();
-            Lista listaRelaciones = u.getRelaciones();
-            Nodo pAux3 = listaRelaciones.getHead();
-            while (pAux3!=null){
-                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement(), true);
-                pAux3=pAux3.getNext();
-                n++;
+//        while (pAux2!=null){
+//            Usuario u = (Usuario) pAux2.getElement();
+//            Lista listaRelaciones = u.getRelaciones();
+//            Nodo pAux3 = listaRelaciones.getHead();
+//            while (pAux3!=null){
+//                g.addEdge( Integer.toString(n), u.getName(), (String) pAux3.getElement(), true);
+//                pAux3=pAux3.getNext();
+//                n++;
+//            }
+//            pAux2 = pAux2.getNext();
+//        }
+
+        for (int i=0;i< getGrafo().getMatrixAdy().length;i++){
+            for (int j=0;j< getGrafo().getMatrixAdy().length;j++){
+                if(getGrafo().getMatrixAdy()[i][j]==1){
+                    g.addEdge(Integer.toString(i)+Integer.toString(j), ((Usuario)ListaUsuarios.returnIndexData(i)).getName(), ((Usuario) ListaUsuarios.returnIndexData(j)).getName());
+                }
             }
-            pAux2 = pAux2.getNext();
         }
         return g;
     } 

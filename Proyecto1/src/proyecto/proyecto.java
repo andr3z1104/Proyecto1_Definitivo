@@ -68,7 +68,9 @@ public class proyecto {
        a.addNode("C");
        a.addEdge("AB", "A", "B");
        a.addEdge("BC", "B", "C");
-//       a.display();
+       Edge edge = a.getEdge("AB");
+       edge.setAttribute("ui.style", "fill-color: red;");
+       a.display();
 
        
     }

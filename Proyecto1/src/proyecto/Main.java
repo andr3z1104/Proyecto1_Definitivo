@@ -15,8 +15,9 @@ public class Main {
        Txt t = new Txt();
        System.setProperty("org.graphstream.ui", "swing");
        GrafoDefinitivo g = new GrafoDefinitivo(t.ListaUsuarios());
-       GraficarGrafo a = new GraficarGrafo(g.getListaUsuarios());
-       g.completarGrafo();
+        g.completarGrafo();
+       GraficarGrafo a = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+      
        g.print();
        g.printMA();
        a.mostrar();

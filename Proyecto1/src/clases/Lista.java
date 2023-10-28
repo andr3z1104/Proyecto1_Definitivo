@@ -183,4 +183,29 @@ public class Lista implements iLista{
         }
     }
     
+    public Nodo searchByIndex(int index){
+        Nodo pAux=this.head;
+        int count = 0;
+        
+        while (pAux!=null && count!=index){
+            pAux=pAux.getNext();
+            count++;
+        }
+        if (pAux!=null){
+            return pAux;
+        }else{
+            return null;
+        }
+        
+    }
+    
+    public Object returnIndexData(int index){
+        Nodo returnedNodo=this.searchByIndex(index);
+        if (returnedNodo!=null){
+            return returnedNodo.getElement();
+        }else{
+            return null;
+        }
+    }
+    
 }
