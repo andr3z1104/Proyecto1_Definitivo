@@ -34,8 +34,8 @@ public class GrafoDefinitivo {
     }
     
     
-    public void completarGrafo(){
-        
+    public GrafoDefinitivo completarGrafo(){
+        GrafoDefinitivo a = new GrafoDefinitivo(ListaUsuarios);
         GRAFO g = new GRAFO(ListaUsuarios.getLength());
         Nodo pointer = ListaUsuarios.getHead();
         int count1 = 0;
@@ -71,11 +71,13 @@ public class GrafoDefinitivo {
         }
         
         setGrafo(g);
+        a.setGrafo(g);
+        return a;
         
     }
     
     
-    public void deleteVerticeGrafo(String Usuario){
+    public GrafoDefinitivo deleteVerticeGrafo(String Usuario){
         
         Nodo pointer = ListaUsuarios.getHead();
         int count1 = 0;
@@ -90,7 +92,6 @@ public class GrafoDefinitivo {
                 count1++;
             }
         }
-        
         getGrafo().deleteVertice(count1);
         getListaUsuarios().deleteAtIndex(count1);
         
@@ -108,16 +109,17 @@ public class GrafoDefinitivo {
             pointer2 = pointer2.getNext();
         }
         
-        
+        return this;
     }
     
-    public void insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
+    public GrafoDefinitivo insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
         
         Usuario pointer = new Usuario(Usuario);
         pointer.setRelaciones(ListaRelaciones);
         getGrafo().insertVertice(1);
         getListaUsuarios().insertFinale(pointer);
         completarGrafo();
+        return this;
     }
     
     

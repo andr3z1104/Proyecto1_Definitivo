@@ -4,6 +4,8 @@
  */
 package UIs;
 
+import clases.GraficarGrafo;
+import clases.GrafoDefinitivo;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +13,8 @@ import javax.swing.JOptionPane;
  * @author ACER
  */
 public class CargarArchivo extends javax.swing.JFrame {
-
+    private GrafoDefinitivo g;
+    private String path;
     /**
      * Creates new form negawatt
      */
@@ -95,18 +98,24 @@ public class CargarArchivo extends javax.swing.JFrame {
     private void ModificarGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoButActionPerformed
         this.setVisible(false);
         ModificarGrafo ventana = new ModificarGrafo();
+        ventana.setPath(getPath());
+        ventana.setG(getG());
         ventana.setVisible(true);
             
     }//GEN-LAST:event_ModificarGrafoButActionPerformed
 
     private void VerGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerGrafoButActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
+        setG(getG().completarGrafo());
+        
+        GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+        gPrint.mostrar();
     }//GEN-LAST:event_VerGrafoButActionPerformed
 
     private void KosajaruButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KosajaruButActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
+        setG(getG().completarGrafo());
+        GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+        gPrint.printSubGraph();
+        
     }//GEN-LAST:event_KosajaruButActionPerformed
 
     /**
@@ -152,4 +161,32 @@ public class CargarArchivo extends javax.swing.JFrame {
     private javax.swing.JButton VerGrafoBut;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the g
+     */
+    public GrafoDefinitivo getG() {
+        return g;
+    }
+
+    /**
+     * @param g the g to set
+     */
+    public void setG(GrafoDefinitivo g) {
+        this.g = g;
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

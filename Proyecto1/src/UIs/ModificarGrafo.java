@@ -4,12 +4,16 @@
  */
 package UIs;
 
+import clases.GrafoDefinitivo;
+
 /**
  *
  * @author ACER
  */
 public class ModificarGrafo extends javax.swing.JFrame {
 
+    private GrafoDefinitivo g;
+    private String path;
     /**
      * Creates new form ModificarGrafo
      */
@@ -32,6 +36,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         TituloModificar = new javax.swing.JLabel();
         ElminiarUsuarioBut = new javax.swing.JButton();
         AñadirUsuarioBut = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         FondoModificar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +73,14 @@ public class ModificarGrafo extends javax.swing.JFrame {
         });
         getContentPane().add(AñadirUsuarioBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, 90));
 
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
+
         FondoModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo Modificar.jpeg"))); // NOI18N
         getContentPane().add(FondoModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 420));
 
@@ -77,14 +90,26 @@ public class ModificarGrafo extends javax.swing.JFrame {
     private void ElminiarUsuarioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElminiarUsuarioButActionPerformed
         this.setVisible(false);
         EliminarUsuario ventanaeliminar = new EliminarUsuario();
+        ventanaeliminar.setG(getG());
+        ventanaeliminar.setPath(getPath());
         ventanaeliminar.setVisible(true);
     }//GEN-LAST:event_ElminiarUsuarioButActionPerformed
 
     private void AñadirUsuarioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirUsuarioButActionPerformed
         this.setVisible(false);
         AñadirUsuario ventanaañadir = new AñadirUsuario();
+        ventanaañadir.setPath(getPath());
+        ventanaañadir.setG(getG());
         ventanaañadir.setVisible(true);
     }//GEN-LAST:event_AñadirUsuarioButActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        CargarArchivo v = new CargarArchivo();
+        v.setG(getG());
+        v.setPath(getPath());
+        v.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,5 +152,34 @@ public class ModificarGrafo extends javax.swing.JFrame {
     private javax.swing.JLabel FondoModificar;
     private javax.swing.JLabel TituloModificar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the g
+     */
+    public GrafoDefinitivo getG() {
+        return g;
+    }
+
+    /**
+     * @param g the g to set
+     */
+    public void setG(GrafoDefinitivo g) {
+        this.g = g;
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

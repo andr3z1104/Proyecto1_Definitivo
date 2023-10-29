@@ -4,6 +4,8 @@
  */
 package UIs;
 
+import clases.GrafoDefinitivo;
+import clases.Txt;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -13,7 +15,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author ACER
  */
 public class InterfazGeneral extends javax.swing.JFrame {
-
+    private GrafoDefinitivo g;
+    private String path;
     /**
      * Creates new form interfazisolda
      */
@@ -88,21 +91,30 @@ public class InterfazGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_ArchivoPrevioButActionPerformed
 
     private void CargarArchivoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoButActionPerformed
-
-        JFileChooser jFileChooser = new JFileChooser();
-        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("TXT","txt");
-        jFileChooser.setFileFilter(filtrado);
-        
-        int respuesta = jFileChooser.showOpenDialog(this);
-        
-        if (respuesta==JFileChooser.APPROVE_OPTION) {
-            String Ruta = jFileChooser.getSelectedFile().getPath();
-            JOptionPane.showMessageDialog(null, "El archivo se leyó ");
-            this.setVisible(false);
-            CargarArchivo ventanacargar = new CargarArchivo();
-            ventanacargar.setVisible(true);
-            
-        }
+        Txt t = new Txt();
+        setPath(t.Seleccionar());
+        JOptionPane.showMessageDialog(null, "El archivo se leyó ");
+        setG(new GrafoDefinitivo(t.ListaUsuarios(getPath())));
+        setG(getG().completarGrafo());
+        CargarArchivo ventanacargar = new CargarArchivo();
+        ventanacargar.setPath(getPath());
+        ventanacargar.setG(getG());
+        ventanacargar.setVisible(true);
+        this.dispose();
+//        JFileChooser jFileChooser = new JFileChooser();
+//        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("TXT","txt");
+//        jFileChooser.setFileFilter(filtrado);
+//        
+//        int respuesta = jFileChooser.showOpenDialog(this);
+//        
+//        if (respuesta==JFileChooser.APPROVE_OPTION) {
+//            String Ruta = jFileChooser.getSelectedFile().getPath();
+//            JOptionPane.showMessageDialog(null, "El archivo se leyó ");
+//            this.setVisible(false);
+//            CargarArchivo ventanacargar = new CargarArchivo();
+//            ventanacargar.setVisible(true);
+//            
+//        }
     }//GEN-LAST:event_CargarArchivoButActionPerformed
 
     /**
@@ -147,4 +159,32 @@ public class InterfazGeneral extends javax.swing.JFrame {
     private javax.swing.JLabel TituloInterfazGeneral;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the g
+     */
+    public GrafoDefinitivo getG() {
+        return g;
+    }
+
+    /**
+     * @param g the g to set
+     */
+    public void setG(GrafoDefinitivo g) {
+        this.g = g;
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

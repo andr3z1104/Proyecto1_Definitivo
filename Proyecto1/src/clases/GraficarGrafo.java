@@ -5,6 +5,7 @@
 package clases;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
+import org.graphstream.ui.view.Viewer;
 /**
  *
  * @author Luis
@@ -82,7 +83,8 @@ public class GraficarGrafo {
             node.setAttribute("ui.style", "text-size: 20;");
         }
         
-        g.display();
+        Viewer viewer = g.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }
       
     public Graph ChangeColorOfEdge(Lista lista,Graph g, int x,int y,int z){
@@ -127,7 +129,9 @@ public class GraficarGrafo {
         for (Node node : g) {
             node.setAttribute("ui.style", "text-size: 20;");
         }
-        g.display();
+        Viewer viewer = g.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+        
     }
         
     

@@ -4,12 +4,17 @@
  */
 package UIs;
 
+import clases.GrafoDefinitivo;
+import clases.Lista;
+import clases.Txt;
+
 /**
  *
  * @author ACER
  */
 public class AñadirUsuario extends javax.swing.JFrame {
-
+    private GrafoDefinitivo g;
+    private String path;
     /**
      * Creates new form AñadirUsuario
      */
@@ -30,10 +35,13 @@ public class AñadirUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         TItuloAñadir = new javax.swing.JLabel();
-        TextAñadir = new javax.swing.JTextField();
-        TextRelacion = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        relaciones = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        añadir = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
+        confirmacion = new javax.swing.JTextField();
         FondoAñadir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,24 +51,64 @@ public class AñadirUsuario extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 72, -1, -1));
 
         TItuloAñadir.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        TItuloAñadir.setText("Que quiere hacer");
-        getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 390, -1));
-        getContentPane().add(TextAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 390, 90));
-        getContentPane().add(TextRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 390, 90));
+        TItuloAñadir.setText("Añadir Usuario");
+        getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 390, -1));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 390, 30));
+        getContentPane().add(relaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 390, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Añadir Usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+        jLabel1.setText("Nombre de Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Añadir Relación");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        jLabel2.setText("Añadir Relaciones");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+
+        añadir.setText("Añadir");
+        añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
+
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, -1, -1));
+        getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
 
         FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoAñadir.jpeg"))); // NOI18N
         getContentPane().add(FondoAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirActionPerformed
+       String nombre=name.getText();
+       String relacion = relaciones.getText();
+       String[] splits = relacion.split(",");
+       Lista relations = new Lista();
+       for (int i=0;i<splits.length;i++){
+           relations.insertFinale(splits[i]);
+       }
+       setG(getG().insertUsuarioGrafo(nombre, relations));
+       Txt t = new Txt();
+       t.modificarTxt(getPath(), t.modifiarStringAdd(t.leer_txt(getPath()), nombre, relations));
+       setG(getG().completarGrafo());
+       confirmacion.setText("El usuario fue añadido exitosamente");
+    }//GEN-LAST:event_añadirActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        ModificarGrafo v = new ModificarGrafo();
+        v.setG(getG());
+        v.setPath(getPath());
+        v.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,10 +148,41 @@ public class AñadirUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoAñadir;
     private javax.swing.JLabel TItuloAñadir;
-    private javax.swing.JTextField TextAñadir;
-    private javax.swing.JTextField TextRelacion;
+    private javax.swing.JButton añadir;
+    private javax.swing.JTextField confirmacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField name;
+    private javax.swing.JButton regresar;
+    private javax.swing.JTextField relaciones;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the g
+     */
+    public GrafoDefinitivo getG() {
+        return g;
+    }
+
+    /**
+     * @param g the g to set
+     */
+    public void setG(GrafoDefinitivo g) {
+        this.g = g;
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
