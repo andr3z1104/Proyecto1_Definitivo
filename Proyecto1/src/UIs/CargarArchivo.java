@@ -4,12 +4,17 @@
  */
 package UIs;
 
+import clases.GraficarGrafo;
+import clases.GrafoDefinitivo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ACER
  */
 public class CargarArchivo extends javax.swing.JFrame {
-
+    private GrafoDefinitivo g;
+    private String path;
     /**
      * Creates new form negawatt
      */
@@ -32,7 +37,7 @@ public class CargarArchivo extends javax.swing.JFrame {
         TituloCargarArchivo = new javax.swing.JLabel();
         VerGrafoBut = new javax.swing.JButton();
         ModificarGrafoBut = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        KosajaruBut = new javax.swing.JButton();
         FondoCargarArchivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,6 +57,11 @@ public class CargarArchivo extends javax.swing.JFrame {
         VerGrafoBut.setForeground(new java.awt.Color(255, 255, 255));
         VerGrafoBut.setText("Ver Grafo");
         VerGrafoBut.setBorderPainted(false);
+        VerGrafoBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerGrafoButActionPerformed(evt);
+            }
+        });
         getContentPane().add(VerGrafoBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 170, 80));
 
         ModificarGrafoBut.setBackground(new java.awt.Color(0, 0, 0));
@@ -59,14 +69,24 @@ public class CargarArchivo extends javax.swing.JFrame {
         ModificarGrafoBut.setForeground(new java.awt.Color(255, 255, 255));
         ModificarGrafoBut.setText("Modificar Grafo");
         ModificarGrafoBut.setBorderPainted(false);
+        ModificarGrafoBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarGrafoButActionPerformed(evt);
+            }
+        });
         getContentPane().add(ModificarGrafoBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 170, 80));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ver Componentes Fuertemente Concectados");
-        jButton1.setBorderPainted(false);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 300, 80));
+        KosajaruBut.setBackground(new java.awt.Color(0, 0, 0));
+        KosajaruBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        KosajaruBut.setForeground(new java.awt.Color(255, 255, 255));
+        KosajaruBut.setText("Ver Componentes Fuertemente Concectados");
+        KosajaruBut.setBorderPainted(false);
+        KosajaruBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KosajaruButActionPerformed(evt);
+            }
+        });
+        getContentPane().add(KosajaruBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 300, 80));
 
         FondoCargarArchivo.setBackground(new java.awt.Color(0, 0, 0));
         FondoCargarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo CargarImagen.jpeg"))); // NOI18N
@@ -74,6 +94,29 @@ public class CargarArchivo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ModificarGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoButActionPerformed
+        this.setVisible(false);
+        ModificarGrafo ventana = new ModificarGrafo();
+        ventana.setPath(getPath());
+        ventana.setG(getG());
+        ventana.setVisible(true);
+            
+    }//GEN-LAST:event_ModificarGrafoButActionPerformed
+
+    private void VerGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerGrafoButActionPerformed
+        setG(getG().completarGrafo());
+        
+        GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+        gPrint.mostrar();
+    }//GEN-LAST:event_VerGrafoButActionPerformed
+
+    private void KosajaruButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KosajaruButActionPerformed
+        setG(getG().completarGrafo());
+        GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
+        gPrint.printSubGraph();
+        
+    }//GEN-LAST:event_KosajaruButActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,10 +155,38 @@ public class CargarArchivo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoCargarArchivo;
+    private javax.swing.JButton KosajaruBut;
     private javax.swing.JButton ModificarGrafoBut;
     private javax.swing.JLabel TituloCargarArchivo;
     private javax.swing.JButton VerGrafoBut;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the g
+     */
+    public GrafoDefinitivo getG() {
+        return g;
+    }
+
+    /**
+     * @param g the g to set
+     */
+    public void setG(GrafoDefinitivo g) {
+        this.g = g;
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

@@ -55,12 +55,18 @@ public class GrafoDefinitivo {
         this.ListaUsuarios = ListaUsuarios;
     }
     
+
+    
+    public GrafoDefinitivo completarGrafo(){
+        GrafoDefinitivo a = new GrafoDefinitivo(ListaUsuarios);
+
     /**
      *Completa el grafo mediante la adicion de los vertices los cuales tienen relaciones
      * 
      */
     public void completarGrafo(){
         
+
         GRAFO g = new GRAFO(ListaUsuarios.getLength());
         Nodo pointer = ListaUsuarios.getHead();
         int count1 = 0;
@@ -96,15 +102,22 @@ public class GrafoDefinitivo {
         }
         
         setGrafo(g);
+        a.setGrafo(g);
+        return a;
         
     }
     
+
+    
+    public GrafoDefinitivo deleteVerticeGrafo(String Usuario){
+
     /**
      *Borra el vertice del Grafo
      * 
      * @param Usuario el nombre del vertice a eliminar
      */
     public void deleteVerticeGrafo(String Usuario){
+
         
         Nodo pointer = ListaUsuarios.getHead();
         int count1 = 0;
@@ -119,7 +132,6 @@ public class GrafoDefinitivo {
                 count1++;
             }
         }
-        
         getGrafo().deleteVertice(count1);
         getListaUsuarios().deleteAtIndex(count1);
         
@@ -137,9 +149,12 @@ public class GrafoDefinitivo {
             pointer2 = pointer2.getNext();
         }
         
-        
+        return this;
     }
     
+
+    public GrafoDefinitivo insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
+
     /**
      *Inserta un nuevo vertice al grafo
      * 
@@ -147,12 +162,14 @@ public class GrafoDefinitivo {
      * @param ListaRelaciones la lista de relaciones asociadas al vertice
      */
     public void insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
+
         
         Usuario pointer = new Usuario(Usuario);
         pointer.setRelaciones(ListaRelaciones);
         getGrafo().insertVertice(1);
         getListaUsuarios().insertFinale(pointer);
         completarGrafo();
+        return this;
     }
     
     /**
