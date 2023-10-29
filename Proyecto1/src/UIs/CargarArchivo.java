@@ -76,15 +76,14 @@ public class CargarArchivo extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 300, 80));
 
         FondoCargarArchivo.setBackground(new java.awt.Color(0, 0, 0));
+        FondoCargarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo CargarImagen.jpeg"))); // NOI18N
         getContentPane().add(FondoCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ModificarGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoButActionPerformed
-
-//        JOptionPane.showMessageDialog(null, "peru ");
-//        this.setVisible(false);
+        this.setVisible(false);
         ModificarGrafo ventana = new ModificarGrafo();
         ventana.setVisible(true);
             

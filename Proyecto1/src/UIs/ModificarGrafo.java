@@ -47,7 +47,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         ElminiarUsuarioBut.setBackground(new java.awt.Color(0, 0, 0));
         ElminiarUsuarioBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ElminiarUsuarioBut.setForeground(new java.awt.Color(255, 255, 255));
-        ElminiarUsuarioBut.setText("isolda");
+        ElminiarUsuarioBut.setText("Eliminar usuario");
         ElminiarUsuarioBut.setBorderPainted(false);
         ElminiarUsuarioBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +59,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         AñadirUsuarioBut.setBackground(new java.awt.Color(0, 0, 0));
         AñadirUsuarioBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AñadirUsuarioBut.setForeground(new java.awt.Color(255, 255, 255));
-        AñadirUsuarioBut.setText("xuxojaime");
+        AñadirUsuarioBut.setText("Añadir usuario");
         AñadirUsuarioBut.setBorderPainted(false);
         AñadirUsuarioBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +67,8 @@ public class ModificarGrafo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(AñadirUsuarioBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, 90));
+
+        FondoModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo Modificar.jpeg"))); // NOI18N
         getContentPane().add(FondoModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 420));
 
         pack();
@@ -77,7 +79,9 @@ public class ModificarGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_ElminiarUsuarioButActionPerformed
 
     private void AñadirUsuarioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirUsuarioButActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        AñadirUsuario ventanaañadir = new AñadirUsuario();
+        ventanaañadir.setVisible(true);
     }//GEN-LAST:event_AñadirUsuarioButActionPerformed
 
     /**

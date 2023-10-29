@@ -77,6 +77,7 @@ public class InterfazGeneral extends javax.swing.JFrame {
 
         FondoInterfazGeneral.setBackground(new java.awt.Color(51, 255, 51));
         FondoInterfazGeneral.setForeground(new java.awt.Color(0, 255, 0));
+        FondoInterfazGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo InterfazGeneral.jpeg"))); // NOI18N
         getContentPane().add(FondoInterfazGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 480));
 
         pack();
