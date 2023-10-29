@@ -30,6 +30,10 @@ public class AñadirUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         TItuloAñadir = new javax.swing.JLabel();
+        TextAñadir = new javax.swing.JTextField();
+        TextRelacion = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         FondoAñadir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,8 +45,18 @@ public class AñadirUsuario extends javax.swing.JFrame {
         TItuloAñadir.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         TItuloAñadir.setText("Que quiere hacer");
         getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 390, -1));
+        getContentPane().add(TextAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 390, 90));
+        getContentPane().add(TextRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 390, 90));
 
-        FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo.jpeg"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Añadir Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Añadir Relación");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+
+        FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoAñadir.jpeg"))); // NOI18N
         getContentPane().add(FondoAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
 
         pack();
@@ -86,6 +100,10 @@ public class AñadirUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoAñadir;
     private javax.swing.JLabel TItuloAñadir;
+    private javax.swing.JTextField TextAñadir;
+    private javax.swing.JTextField TextRelacion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

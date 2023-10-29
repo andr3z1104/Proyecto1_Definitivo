@@ -75,7 +75,9 @@ public class ModificarGrafo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ElminiarUsuarioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElminiarUsuarioButActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        EliminarUsuario ventanaeliminar = new EliminarUsuario();
+        ventanaeliminar.setVisible(true);
     }//GEN-LAST:event_ElminiarUsuarioButActionPerformed
 
     private void AñadirUsuarioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirUsuarioButActionPerformed
