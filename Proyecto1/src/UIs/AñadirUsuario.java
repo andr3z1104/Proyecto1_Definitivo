@@ -7,12 +7,20 @@ package UIs;
 import clases.GrafoDefinitivo;
 import clases.Lista;
 import clases.Txt;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ACER
  */
 public class AñadirUsuario extends javax.swing.JFrame {
+
+    /**
+     * @return the relaciones
+     */
+    public javax.swing.JTextField getRelaciones() {
+        return relaciones;
+    }
     private GrafoDefinitivo g;
     private String path;
     /**
@@ -42,6 +50,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
         añadir = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
         confirmacion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         FondoAñadir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +63,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
         TItuloAñadir.setText("Añadir Usuario");
         getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 390, -1));
         getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 390, 30));
-        getContentPane().add(relaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 390, 30));
+        getContentPane().add(relaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 390, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre de Usuario");
@@ -62,7 +71,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Añadir Relaciones");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
         añadir.setText("Añadir");
         añadir.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +88,15 @@ public class AñadirUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, -1, -1));
-        getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
+
+        confirmacion.setForeground(new java.awt.Color(255, 0, 0));
+        confirmacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 230, -1));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Formato: Usuario1, Usuario2, Usuario3, ...");
+        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, -1));
 
         FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoAñadir.jpeg"))); // NOI18N
         getContentPane().add(FondoAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
@@ -88,8 +105,19 @@ public class AñadirUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirActionPerformed
-       String nombre=name.getText();
-       String relacion = relaciones.getText();
+       Txt t2 = new Txt();
+        if (name.getText().equalsIgnoreCase("") || t2.leer_txt(getPath()).contains(name.getText())){
+            if ( name.getText().equalsIgnoreCase("")){
+           JOptionPane.showMessageDialog(null, "Por favor ingrese un nombbre valido");
+           }
+           if (t2.leer_txt(getPath()).contains(name.getText())){
+               JOptionPane.showMessageDialog(null, "El usuario ya existe");
+               name.setText("");
+               confirmacion.setText("Solo puede añadir usuarios nuevos");
+           }
+       }else{
+        String nombre=name.getText();
+       String relacion = getRelaciones().getText();
        String[] splits = relacion.split(",");
        Lista relations = new Lista();
        for (int i=0;i<splits.length;i++){
@@ -100,6 +128,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
        t.modificarTxt(getPath(), t.modifiarStringAdd(t.leer_txt(getPath()), nombre, relations));
        setG(getG().completarGrafo());
        confirmacion.setText("El usuario fue añadido exitosamente");
+       }
     }//GEN-LAST:event_añadirActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
@@ -152,6 +181,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField confirmacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name;
     private javax.swing.JButton regresar;

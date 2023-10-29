@@ -6,6 +6,7 @@ package UIs;
 
 import clases.GraficarGrafo;
 import clases.GrafoDefinitivo;
+import clases.Txt;
 import javax.swing.JOptionPane;
 
 /**
@@ -105,14 +106,16 @@ public class CargarArchivo extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarGrafoButActionPerformed
 
     private void VerGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerGrafoButActionPerformed
-        setG(getG().completarGrafo());
+       Txt t = new Txt();
+        setG((new GrafoDefinitivo(t.ListaUsuarios(getPath()))).completarGrafo());
         
         GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
         gPrint.mostrar();
     }//GEN-LAST:event_VerGrafoButActionPerformed
 
     private void KosajaruButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KosajaruButActionPerformed
-        setG(getG().completarGrafo());
+        Txt t = new Txt();
+        setG((new GrafoDefinitivo(t.ListaUsuarios(getPath()))).completarGrafo());
         GraficarGrafo gPrint = new GraficarGrafo(g.getListaUsuarios(),g.getGrafo());
         gPrint.printSubGraph();
         
