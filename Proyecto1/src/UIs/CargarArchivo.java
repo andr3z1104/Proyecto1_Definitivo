@@ -4,6 +4,8 @@
  */
 package UIs;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ACER
@@ -59,6 +61,11 @@ public class CargarArchivo extends javax.swing.JFrame {
         ModificarGrafoBut.setForeground(new java.awt.Color(255, 255, 255));
         ModificarGrafoBut.setText("Modificar Grafo");
         ModificarGrafoBut.setBorderPainted(false);
+        ModificarGrafoBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarGrafoButActionPerformed(evt);
+            }
+        });
         getContentPane().add(ModificarGrafoBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 170, 80));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -69,11 +76,19 @@ public class CargarArchivo extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 300, 80));
 
         FondoCargarArchivo.setBackground(new java.awt.Color(0, 0, 0));
-        FondoCargarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo CargarImagen.jpeg"))); // NOI18N
         getContentPane().add(FondoCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ModificarGrafoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoButActionPerformed
+
+//        JOptionPane.showMessageDialog(null, "peru ");
+//        this.setVisible(false);
+        ModificarGrafo ventana = new ModificarGrafo();
+        ventana.setVisible(true);
+            
+    }//GEN-LAST:event_ModificarGrafoButActionPerformed
 
     /**
      * @param args the command line arguments
