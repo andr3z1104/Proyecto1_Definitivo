@@ -39,16 +39,17 @@ public class EliminarUsuario extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
+        TituloEliminar.setBackground(new java.awt.Color(255, 255, 255));
         TituloEliminar.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         TituloEliminar.setText("A quien va a eliminar");
-        getContentPane().add(TituloEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        getContentPane().add(TituloEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         TextEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(TextEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 132, 430, 60));
+        getContentPane().add(TextEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 430, 60));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoELiminar.jpeg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
