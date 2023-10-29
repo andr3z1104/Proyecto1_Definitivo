@@ -206,7 +206,6 @@ public class GRAFO {
 
     private void dfs(int v, boolean[] visitados, Lista fuerte) {
         visitados[v] = true;
-        System.out.print(v + " ");
         fuerte.insertFinale(v);
 
         for (int i = 0; i < getMatrixAdy().length; i++) {
