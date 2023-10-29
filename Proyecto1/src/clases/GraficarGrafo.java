@@ -53,8 +53,6 @@ public class GraficarGrafo {
     public Graph returnGraph(Lista ListaUsuarios){
         Graph g = new SingleGraph("hp");
         Nodo pAux=  ListaUsuarios.getHead();
-        Nodo pAux2 = ListaUsuarios.getHead();
-        int n = 0;
         
         while (pAux!=null){
             Usuario u = (Usuario) pAux.getElement();
@@ -109,13 +107,15 @@ public class GraficarGrafo {
         return g;
     }
     
-    public void printSubGraph(Lista lista){
-        Nodo pAux=lista.getHead();
+    public void printSubGraph(){
+        Nodo pAux= getGrafo().kosaraju().getHead();
         Graph g=returnGraph(ListaUsuarios);
-        int x=250, y=0, z=0;
+        
         while (pAux!=null){
+               int x = (int) (Math.random() * 256);
+               int y = (int) (Math.random() * 256);
+               int z = (int) (Math.random() * 256);
             g=ChangeColorOfEdge((Lista) pAux.getElement(),g,x,y,z);
-            x=y=z=z+50;
             pAux=pAux.getNext();
         }
         g.setAttribute("ui.stylesheet", "node { text-alignment: under; }");

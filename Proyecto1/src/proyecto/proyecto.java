@@ -17,13 +17,13 @@ public class proyecto {
     public static void main(String[] args) {
 
        Txt t= new Txt();
-       Lista l =new Lista();
-       l.insertFinale("xoxojaime");
-       l.insertFinale("pepe");
-       String path = t.Seleccionar();
-       
-       t.modificarTxt(path, t.modifiarStringAdd(t.leer_txt(path), "luis", l));
-       t.modificarTxt(path, t.modificarStringd(t.leer_txt(path), "luis"));
+//       Lista l =new Lista();
+//       l.insertFinale("xoxojaime");
+//       l.insertFinale("pepe");
+//       String path = t.Seleccionar();
+//       
+//       t.modificarTxt(path, t.modifiarStringAdd(t.leer_txt(path), "luis", l));
+//       t.modificarTxt(path, t.modificarStringd(t.leer_txt(path), "luis"));
        System.setProperty("org.graphstream.ui", "swing");
        Graph a = new SingleGraph("hp");
        GRAFO g = new GRAFO(8);

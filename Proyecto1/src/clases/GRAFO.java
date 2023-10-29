@@ -104,10 +104,12 @@ public class GRAFO {
    
     
     
-    public void kosaraju(){
+    public Lista kosaraju(){
         int n = getMatrixAdy().length;
         boolean[] visitados = new boolean[n];
         StackKosa pila = new StackKosa();
+    
+
 
         for (int i = 0; i < n; i++) {
             if (!visitados[i]) {
@@ -118,16 +120,23 @@ public class GRAFO {
         GRAFO grafoTranspuesto = getTranspuesto();
 
         visitados = new boolean[n];
+        Lista verticesFuertes = new Lista();
+       
 
         while (!pila.isEmpty()) {
               int v = pila.pop().getElement();
 
             if (!visitados[v]) {
+                Lista fuerte = new Lista();
                 System.out.print("Componente fuertemente conexa: ");
-                grafoTranspuesto.dfs(v, visitados);
+                grafoTranspuesto.dfs(v, visitados, fuerte);
                 System.out.println();
+                verticesFuertes.insertFinale(fuerte);
+               
             }
         }
+         verticesFuertes.print();
+         return verticesFuertes;
     }
     
     
@@ -144,13 +153,14 @@ public class GRAFO {
         pila.push(v);
     }
 
-    private void dfs(int v, boolean[] visitados) {
+    private void dfs(int v, boolean[] visitados, Lista fuerte) {
         visitados[v] = true;
         System.out.print(v + " ");
+        fuerte.insertFinale(v);
 
         for (int i = 0; i < getMatrixAdy().length; i++) {
             if (getMatrixAdy()[v][i] != 0 && !visitados[i]) {
-                dfs(i, visitados);
+                dfs(i, visitados, fuerte);
             }
         }
     }

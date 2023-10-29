@@ -28,7 +28,7 @@ public class Main {
        g.print();
        g.printMA();
        a.mostrar();
-       a.printSubGraph(l1);
+       a.printSubGraph();
        g.deleteVerticeGrafo("mazinger");
        g.print();
        a.getListaUsuarios().print();
