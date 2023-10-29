@@ -181,14 +181,12 @@ public class GRAFO {
 
             if (!visitados[v]) {
                 Lista fuerte = new Lista();
-                System.out.print("Componente fuertemente conexa: ");
                 grafoTranspuesto.dfs(v, visitados, fuerte);
-                System.out.println();
                 verticesFuertes.insertFinale(fuerte);
                
             }
         }
-         verticesFuertes.print();
+        
          return verticesFuertes;
     }
     
