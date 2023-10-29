@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package clases;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
+
 /**
  *
  * @author Luis
@@ -13,7 +11,12 @@ public class GraficarGrafo {
     private GRAFO grafo;
     private Lista ListaUsuarios;
 
-
+    /**
+     *Crea un objeto GraficarGrafo con una lista de usuarios y un GRAFO
+     * 
+     * @param ListaUsuarios la lista de usuarios
+     * @param grafo el GRAFO
+     */
     public GraficarGrafo(Lista ListaUsuarios, GRAFO grafo) {
         this.ListaUsuarios = ListaUsuarios;
         this.grafo=grafo;
@@ -21,35 +24,47 @@ public class GraficarGrafo {
     
              
     /**
-     * @return the grafo
+     * Devuelve el GRAFO
+     * 
+     * @return el GRAFO
      */
     public GRAFO getGrafo() {
         return grafo;
     }
 
     /**
-     * @param grafo the grafo to set
+     * Setea el GRAFO
+     * 
+     * @param grafo el GRAFO a establecer
      */
     public void setGrafo(GRAFO grafo) {
         this.grafo = grafo;
     }
 
     /**
-     * @return the ListaUsuarios
+     * Devuelve la lista de usuarios
+     * 
+     * @return la ListaUsuarios
      */
     public Lista getListaUsuarios() {
         return ListaUsuarios;
     }
 
     /**
-     * @param ListaUsuarios the ListaUsuarios to set
+     * Setea la lista de usuarios
+     * 
+     * @param ListaUsuarios la ListaUsuarios a setear
      */
     public void setListaUsuarios(Lista ListaUsuarios) {
         this.ListaUsuarios = ListaUsuarios;
     }
     
-    
-
+    /**
+     *Crea y devuelve un objeto Graph que representa al GRAFO
+     * 
+     * @param ListaUsuarios la lista de usuarios
+     * @return el objeto Graph que representa al GRAFO
+     */
     public Graph returnGraph(Lista ListaUsuarios){
         Graph g = new SingleGraph("hp");
         Nodo pAux=  ListaUsuarios.getHead();
@@ -70,6 +85,10 @@ public class GraficarGrafo {
         return g;
     } 
     
+    /**
+     *Muestra el grafo utilizando la libreria GraphStream
+     * 
+     */
     public void mostrar(){
         Graph g = returnGraph(ListaUsuarios);
         g.setAttribute("ui.stylesheet", "node { text-alignment: under; }");
@@ -85,6 +104,16 @@ public class GraficarGrafo {
         g.display();
     }
       
+    /**
+     *Cambia el color de las aristas del Graph, tomando en cuenta el RGB
+     * 
+     * @param lista lista simplemente enlazada de nodos
+     * @param g el Graph
+     * @param x el valor rojo para llenar el color (R)
+     * @param y el valor verde para llenar el color (G)
+     * @param z el valor azul para llenar el color (B)
+     * @return el Graph modificado con las aristas pintadas
+     */
     public Graph ChangeColorOfEdge(Lista lista,Graph g, int x,int y,int z){
         for (int i=0;i<getGrafo().getMatrixAdy().length;i++){
             for (int j=0;j<getGrafo().getMatrixAdy().length;j++){
@@ -107,6 +136,14 @@ public class GraficarGrafo {
         return g;
     }
     
+    /**
+     *Printea un subgrafo con las aristas pintadas
+     * 
+     * Este metodo genera valores aleatorios de RGB para cada subgrafo y llama a la funcion
+     * ChangeColorOfEdge para colorear las aristas
+     * 
+     * @see ChangeColorOfEdge
+     */
     public void printSubGraph(){
         Nodo pAux= getGrafo().kosaraju().getHead();
         Graph g=returnGraph(ListaUsuarios);

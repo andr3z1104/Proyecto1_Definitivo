@@ -12,32 +12,66 @@ public class Lista implements iLista{
     private Nodo head;
     private int length;
     
+    /**
+     *Constructor de la lista enlazada
+     * 
+     */
     public Lista(){
         this.head = null;
         this.length = 0; 
     }
 
+    /**
+     *Obtiene la cabeza de la lista enlazada
+     * 
+     * @return la cabeza de la lista enlazada
+     */
     public Nodo getHead() {
         return head;
     }
 
+    /**
+     *Setea la cabeza de la lista enlazada
+     * 
+     * @param head la cabeza de la lista enlazada
+     */
     public void setHead(Nodo head) {
         this.head = head;
     }
 
+    /**
+     *Obtiene la longitud de la lista enlazada
+     * 
+     * @return la longitud de la lista enlazada
+     */
     public int getLength() {
         return length;
     }
 
+    /**
+     *Setea la longitud de la lista enlazada
+     * 
+     * @param length la longitud de la lista enlazada
+     */
     public void setLength(int length) {
         this.length = length;
     }
     
+    /**
+     *Checkea si la lista enlazada esta vacia
+     * 
+     * @return true si la lista esta vacia, falso de lo contrario
+     */
     @Override
     public boolean isEmpty(){
         return getHead() == null;
     }
     
+    /**
+     *Inserta un elemento al prinicpio de la lista enlazada
+     * 
+     * @param element el elemento a insertar
+     */
     @Override
     public void insertBegin(Object element){
         Nodo nodo = new Nodo(element);
@@ -52,6 +86,11 @@ public class Lista implements iLista{
         length++;
     }
     
+    /**
+     *Inserta un elemento al final de la lista enlazada
+     * 
+     * @param element el elemento a insertar
+     */
     @Override
     public void insertFinale(Object element){
         Nodo nodo = new Nodo(element);
@@ -69,6 +108,12 @@ public class Lista implements iLista{
         length++;
     }
     
+    /**
+     *Insertar un elemento al indice espicificado de la lista enlazada
+     * 
+     * @param element el elemento a insertar
+     * @param index el indice al cual se insertar el elemento
+     */
     @Override
     public void insertAtIndex(Object element, int index){
         Nodo nodo = new Nodo(element);
@@ -103,6 +148,11 @@ public class Lista implements iLista{
         
     }
     
+    /**
+     *Borra el primer elemento de la lista enlazada, es decir, la cabeza
+     * 
+     * @return pointer
+     */
     @Override
     public Nodo deleteBegin(){
     
@@ -120,6 +170,11 @@ public class Lista implements iLista{
     
     }
     
+    /**
+     *Borra el ultimo elemento de la lista enlazada
+     * 
+     * @return temp
+     */
     @Override
     public Nodo deleteFinale(){
         
@@ -139,7 +194,12 @@ public class Lista implements iLista{
         }
     }
     
-    
+    /**
+     *Borra un elemento al indice espicificado de la lista enlazada
+     * 
+     * @param index el indice del elemento 
+     * @return temp
+     */
     @Override
     public Nodo deleteAtIndex(int index){
         
@@ -175,6 +235,10 @@ public class Lista implements iLista{
         
     }
     
+    /**
+     *Printea la lista enlazada
+     * 
+     */
     public void print(){
         Nodo pointer = getHead();
         while(pointer != null){
@@ -183,6 +247,12 @@ public class Lista implements iLista{
         }
     }
     
+    /**
+     *Busca un elemento por su indice
+     * 
+     * @param index el indice del elemento 
+     * @return pAux
+     */
     public Nodo searchByIndex(int index){
         Nodo pAux=this.head;
         int count = 0;
@@ -199,6 +269,13 @@ public class Lista implements iLista{
         
     }
     
+    /**
+     *Retorna el elemento del nodo
+     * 
+     * @see searchByIndex
+     * @param index el indice del elemento
+     * @return
+     */
     public Object returnIndexData(int index){
         Nodo returnedNodo=this.searchByIndex(index);
         if (returnedNodo!=null){

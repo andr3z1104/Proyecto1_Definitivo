@@ -13,35 +13,78 @@ public class GRAFO {
     private boolean[] visitado;
     private int [][] matrixAdy;
 
+    /**
+     *Construye un objeto GRAFO usando una matriz de adyacencia con el numero especificado de vertices
+     * 
+     * @param n el numero the vertices de la matriz
+     */
     public GRAFO(int n) {
         matrixAdy = new int [n][n];
     }
 
+    /**
+     *Retorna la matriz de adyacencia del GRAFO
+     * 
+     * @return la matriz de adyacencia
+     */
     public int[][] getMatrixAdy() {
         return matrixAdy;
     }
 
+    /**
+     * Setea la matriz de adyacencia del GRAFO
+     * 
+     * @param matrixAdy
+     */
     public void setMatrixAdy(int[][] matrixAdy) {
         this.matrixAdy = matrixAdy;
     }
     
+    /**
+     * Retorna un boolean array indicando si cada vertice fue visitado
+     * 
+     * @return boolean array indicando si cada vertice fue visitado
+     */
     public boolean[] getVisitado(){
         return visitado;
     }
 
-    
+    /**
+     *Checkea si el GRAFO esta vacio (no tiene vertices)
+     * 
+     * @return true si el GRAFO esta vacio, falso de lo contrario
+     */
     public boolean isEmpty(){
         return getMatrixAdy().length == 0;
     }
     
+    /**
+     *Checkea si hay una arista entre dos vertices
+     * 
+     * @param i el indice del primer vertice
+     * @param j el indice del segundo vertice
+     * @return true si hay una arista entre dos vertices, falso de lo contrario
+     */
     public boolean existArista(int i, int j){
         return matrixAdy[i][j] != 0;
     } 
     
+    /**
+     *Inserta una arista entre dos vertices
+     * 
+     * @param i el indice del primer vertice 
+     * @param j el indice del segundo vertice
+     */
     public void insertArista(int i, int j){
         matrixAdy[i][j] = 1;
     }
     
+    /**
+     *Borra la arista entre dos vertices
+     * 
+     * @param i el indice del primer vertice 
+     * @param j el indice del segundo vertice
+     */
     public void deleteArista(int i, int j){
         if(isEmpty()){
             System.out.println("Grafo vacio");
@@ -52,8 +95,12 @@ public class GRAFO {
         }
     }
     
-    
-     public void insertVertice(int n){
+    /**
+     *Inserta uno o mas vertice al GRAFO
+     * 
+     * @param n el numero de vertices a insertar
+     */
+    public void insertVertice(int n){
         int[][] newMatriz = new int [n + getMatrixAdy().length] [n + getMatrixAdy().length];
             for (int x = 0; x < getMatrixAdy().length; x++) {
                 for (int y = 0; y < getMatrixAdy().length; y++)
@@ -62,7 +109,11 @@ public class GRAFO {
            setMatrixAdy(newMatriz);
      }
     
-    
+    /**
+     *Borra un vertice del GRAFO
+     * 
+     * @param v el indice del vertice a borrar
+     */
     public void deleteVertice(int v){
         
         if(isEmpty()){
@@ -101,9 +152,11 @@ public class GRAFO {
         
     }
     
-   
-    
-    
+    /**
+     *Hace el algoritmo de Kosaraju para encontrar los componentes fuertementes conectados del GRAFO
+     * 
+     * @return una Lista de Listas, en que cada Lista contiene los componentes fuertemente conectados
+     */
     public Lista kosaraju(){
         int n = getMatrixAdy().length;
         boolean[] visitados = new boolean[n];
@@ -178,8 +231,10 @@ public class GRAFO {
         return grafoTranspuesto;
     }
     
-    
-    
+    /**
+     *Printea la matriz de adjacencia del GRAFO
+     * 
+     */
     public void print(){
         System.out.println("Vertices: " + getMatrixAdy().length );
         for (int i = 0; i < getMatrixAdy().length; i++) {

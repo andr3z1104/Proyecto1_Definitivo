@@ -10,10 +10,15 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author UsuarioDeWindows
+ * @author Luis
  */
 public class Txt {
     
+    /**
+     *Indica al usuario para que seleccione un archivo de texto (.TXT) usando el FileChooser
+     * 
+     * @return path, la ubicacion del archivo selecto
+     */
     public String Seleccionar(){
         String path;
         JFileChooser buscador = new JFileChooser();
@@ -22,6 +27,12 @@ public class Txt {
         return path;
     }
     
+    /**
+     *Lee los contenidos del archivo de texto (.TXT)
+     * 
+     * @param path la ubicacion del archivo selecto a leer
+     * @return usuarios_txt, los contenidos del archivo en forma de String
+     */
     public String leer_txt(String path){
         String line;
         String usuarios_txt = "";
@@ -47,6 +58,13 @@ public class Txt {
         
     }
     
+    /**
+     *Analiza el contenido y crea una lista enlazada de usuarios con sus relaciones
+     * la cual tambien se almacena en una lista enlazada
+     * 
+     * @param path la ubicacion del archivo de texto para analizar
+     * @return ListaUsers, lista de usarios con sus relaciones
+     */
     public Lista ListaUsuarios(String path){
         String data = leer_txt(path);
         Lista ListaUsers = new Lista();
@@ -54,9 +72,11 @@ public class Txt {
         String[] data_split = data.split("relaciones");
         String[] data_users = data_split[0].split("\n");
         String[] data_relations = data_split[1].split("\n");
+        
         for (int i=1; i<data_users.length;i++){
             Usuario user = new Usuario(data_users[i].replace(" ","").replace("@",""));
             Lista relaciones = new Lista();
+            
             for (int j=0;j<data_relations.length;j++){
                 String[] relacion = data_relations[j].split(",");
                 if (("@"+user.getName()).equals(relacion[0])){
@@ -64,6 +84,7 @@ public class Txt {
                     relaciones.insertFinale(relacionado);
                 }
             }
+            
             user.setRelaciones(relaciones);
             ListaUsers.insertFinale(user);
   
@@ -71,6 +92,12 @@ public class Txt {
         return ListaUsers;
     }
     
+    /**
+     *Modifca el archivo de texto con datos nuevos
+     * 
+     * @param path la ubicacion del archivo de texto a modificar
+     * @param data los nuevos datos que seran escritos en el archivo de texto
+     */
     public void modificarTxt(String path, String data){
         try { 
 
@@ -84,6 +111,14 @@ public class Txt {
         } 
     }
     
+    /**
+     *Modifica un String mediante la eliminacion de las ocurriencias de un
+     * nombre especifico
+     * 
+     * @param s el String a modificar
+     * @param name el nombre para remover del String
+     * @return new_string, el String modificado
+     */
     public String modificarStringd(String s, String name){
         String[] splits = s.split("\n");
         String new_string = "";
@@ -96,6 +131,14 @@ public class Txt {
         return new_string;
     }
     
+    /**
+     *Modifca un String mediante la adicion de un nombre nuevo con sus relaciones nuevas
+     * 
+     * @param s el String a modificar
+     * @param name el nombre al cual se le agrega sus relaciones
+     * @param relaciones la lista de relaciones para agregar
+     * @return new_string, el String modificado
+     */
     public String modifiarStringAdd(String s, String name,Lista relaciones){
         String[] splits = s.split("\n");
         String new_string = "";

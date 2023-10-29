@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package clases;
 
 /**
@@ -13,27 +10,55 @@ public class GrafoDefinitivo {
     private GRAFO grafo;
     private Lista ListaUsuarios;
 
+    /**
+     *Construye un objeto GrafoDefinitivo con la lista de usuarios
+     * 
+     * @param ListaUsuarios la lista de usuarios
+     */
     public GrafoDefinitivo(Lista ListaUsuarios) {
         this.ListaUsuarios = ListaUsuarios;
     }
 
+    /**
+     *Retorna el GRAFO asociado con el objeto GrafoDefinitivo
+     * 
+     * @return GRAFO
+     */
     public GRAFO getGrafo() {
         return grafo;
     }
 
+    /**
+     *Setea el GRAFO para el objeto GrafoDefinitivo
+     * 
+     * @param grafo el GRAFO para setear
+     */
     public void setGrafo(GRAFO grafo) {
         this.grafo = grafo;
     }
 
+    /**
+     *Retorna la lista de usuarios asociado con el objeto GrafoDefinitivo
+     * 
+     * @return la lista de usuarios
+     */
     public Lista getListaUsuarios() {
         return ListaUsuarios;
     }
 
+    /**
+     *Setea la lista de usuarios para el objeto GrafoDefinitivo
+     * 
+     * @param ListaUsuarios la lista de usuarios para setear
+     */
     public void setListaUsuarios(Lista ListaUsuarios) {
         this.ListaUsuarios = ListaUsuarios;
     }
     
-    
+    /**
+     *Completa el grafo mediante la adicion de los vertices los cuales tienen relaciones
+     * 
+     */
     public void completarGrafo(){
         
         GRAFO g = new GRAFO(ListaUsuarios.getLength());
@@ -74,7 +99,11 @@ public class GrafoDefinitivo {
         
     }
     
-    
+    /**
+     *Borra el vertice del Grafo
+     * 
+     * @param Usuario el nombre del vertice a eliminar
+     */
     public void deleteVerticeGrafo(String Usuario){
         
         Nodo pointer = ListaUsuarios.getHead();
@@ -111,6 +140,12 @@ public class GrafoDefinitivo {
         
     }
     
+    /**
+     *Inserta un nuevo vertice al grafo
+     * 
+     * @param Usuario el nombre del vertice a insertar
+     * @param ListaRelaciones la lista de relaciones asociadas al vertice
+     */
     public void insertUsuarioGrafo(String Usuario, Lista ListaRelaciones){
         
         Usuario pointer = new Usuario(Usuario);
@@ -120,8 +155,10 @@ public class GrafoDefinitivo {
         completarGrafo();
     }
     
-    
-    
+    /**
+     *Printea el grafo
+     * 
+     */
     public void print(){
         Nodo pointer = ListaUsuarios.getHead();
         Nodo pointer2 = ListaUsuarios.getHead();
@@ -144,7 +181,11 @@ public class GrafoDefinitivo {
         
     }
     
-     public void printMA(){
+    /**
+     *Printea la matriz de adjacencia del grafo
+     * 
+     */
+    public void printMA(){
         System.out.println("Vertices: " + getGrafo().getMatrixAdy().length );
         for (int i = 0; i < getGrafo().getMatrixAdy().length; i++) {
             for (int j = 0; j < getGrafo().getMatrixAdy().length; j++) {
