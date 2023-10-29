@@ -101,6 +101,8 @@ public class GRAFO {
         
     }
     
+   
+    
     
     public void kosaraju(){
         int n = getMatrixAdy().length;
@@ -127,6 +129,8 @@ public class GRAFO {
             }
         }
     }
+    
+    
 
     private void findOrder(int v, boolean[] visitados, StackKosa pila) {
         visitados[v] = true;

@@ -15,11 +15,16 @@ import org.graphstream.ui.layout.*;
 public class proyecto {
 
     public static void main(String[] args) {
-       //Txt t = new Txt();
-       //System.setProperty("org.graphstream.ui", "org.graphstream.ui.javafx.JavaFXGraphRenderer");
+
+       Txt t= new Txt();
+       Lista l =new Lista();
+       l.insertFinale("xoxojaime");
+       l.insertFinale("pepe");
+       String path = t.Seleccionar();
+       
+       t.modificarTxt(path, t.modifiarStringAdd(t.leer_txt(path), "luis", l));
+       t.modificarTxt(path, t.modificarStringd(t.leer_txt(path), "luis"));
        System.setProperty("org.graphstream.ui", "swing");
-//       Txt t = new Txt();
-//       t.modificarTxt(t.Seleccionar(), t.modificarString(t.leer_txt(t.Seleccionar()), "tuqui33"));
        Graph a = new SingleGraph("hp");
        GRAFO g = new GRAFO(8);
        g.print();

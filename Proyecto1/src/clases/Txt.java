@@ -84,7 +84,7 @@ public class Txt {
         } 
     }
     
-    public String modificarString(String s, String name){
+    public String modificarStringd(String s, String name){
         String[] splits = s.split("\n");
         String new_string = "";
         for (int i=0;i<splits.length;i++){
@@ -93,6 +93,24 @@ public class Txt {
             }
         }
         
+        return new_string;
+    }
+    
+    public String modifiarStringAdd(String s, String name,Lista relaciones){
+        String[] splits = s.split("\n");
+        String new_string = "";
+        for (int i=0;i<splits.length;i++){
+            if (splits[i].equalsIgnoreCase("relaciones")){
+                new_string+="@"+name+"\n"+splits[i]+"\n";
+            }else{
+                new_string+=splits[i]+"\n";
+            }  
+        }
+        Nodo pAux = relaciones.getHead();
+        while (pAux!=null){
+            new_string+="@"+name+","+" "+"@"+((String) pAux.getElement())+"\n";
+            pAux=pAux.getNext();
+        }
         return new_string;
     }
     
