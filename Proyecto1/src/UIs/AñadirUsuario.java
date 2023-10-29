@@ -30,6 +30,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         TItuloAñadir = new javax.swing.JLabel();
+        FondoAñadir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,6 +41,9 @@ public class AñadirUsuario extends javax.swing.JFrame {
         TItuloAñadir.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         TItuloAñadir.setText("Que quiere hacer");
         getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 390, -1));
+
+        FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo.jpeg"))); // NOI18N
+        getContentPane().add(FondoAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,6 +84,7 @@ public class AñadirUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FondoAñadir;
     private javax.swing.JLabel TItuloAñadir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
