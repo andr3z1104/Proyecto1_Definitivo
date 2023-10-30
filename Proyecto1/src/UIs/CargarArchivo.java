@@ -39,6 +39,7 @@ public class CargarArchivo extends javax.swing.JFrame {
         VerGrafoBut = new javax.swing.JButton();
         ModificarGrafoBut = new javax.swing.JButton();
         KosajaruBut = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         FondoCargarArchivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,6 +90,14 @@ public class CargarArchivo extends javax.swing.JFrame {
         });
         getContentPane().add(KosajaruBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 300, 80));
 
+        regresar.setText("Seleccionar otro archivo");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+
         FondoCargarArchivo.setBackground(new java.awt.Color(0, 0, 0));
         FondoCargarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/Fondo CargarImagen.jpeg"))); // NOI18N
         getContentPane().add(FondoCargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 460));
@@ -120,6 +129,12 @@ public class CargarArchivo extends javax.swing.JFrame {
         gPrint.printSubGraph();
         
     }//GEN-LAST:event_KosajaruButActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        InterfazGeneral v = new InterfazGeneral();
+        v.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +178,7 @@ public class CargarArchivo extends javax.swing.JFrame {
     private javax.swing.JLabel TituloCargarArchivo;
     private javax.swing.JButton VerGrafoBut;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 
     /**

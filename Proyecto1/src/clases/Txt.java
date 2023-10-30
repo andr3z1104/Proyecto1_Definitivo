@@ -68,7 +68,7 @@ public class Txt {
     public Lista ListaUsuarios(String path){
         String data = leer_txt(path);
         Lista ListaUsers = new Lista();
-        
+        if (data!=""){
         String[] data_split = data.split("relaciones");
         String[] data_users = data_split[0].split("\n");
         String[] data_relations = data_split[1].split("\n");
@@ -90,6 +90,11 @@ public class Txt {
   
         }
         return ListaUsers;
+        }else{
+        ListaUsers.insertFinale("TxtVacio");
+        return ListaUsers;
+        }
+        
     }
     
     /**
@@ -151,7 +156,9 @@ public class Txt {
         }
         Nodo pAux = relaciones.getHead();
         while (pAux!=null){
+            if (!((String) pAux.getElement()).equalsIgnoreCase("")){
             new_string+="@"+name+","+" "+"@"+((String) pAux.getElement())+"\n";
+            }
             pAux=pAux.getNext();
         }
         return new_string;

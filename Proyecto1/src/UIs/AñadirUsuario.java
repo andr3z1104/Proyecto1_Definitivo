@@ -60,16 +60,19 @@ public class AñadirUsuario extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 72, -1, -1));
 
         TItuloAñadir.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        TItuloAñadir.setForeground(new java.awt.Color(255, 255, 255));
         TItuloAñadir.setText("Añadir Usuario");
         getContentPane().add(TItuloAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 390, -1));
         getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 390, 30));
         getContentPane().add(relaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 390, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nombre de Usuario");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Añadir Relaciones");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
@@ -94,9 +97,10 @@ public class AñadirUsuario extends javax.swing.JFrame {
         getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 230, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Formato: Usuario1, Usuario2, Usuario3, ...");
         jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 280, -1));
 
         FondoAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoAñadir.jpeg"))); // NOI18N
         getContentPane().add(FondoAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
@@ -115,14 +119,20 @@ public class AñadirUsuario extends javax.swing.JFrame {
                name.setText("");
                confirmacion.setText("Solo puede añadir usuarios nuevos");
            }
-       }else{
+        }else{
         String nombre=name.getText();
-       String relacion = getRelaciones().getText();
-       String[] splits = relacion.split(",");
-       Lista relations = new Lista();
-       for (int i=0;i<splits.length;i++){
-           relations.insertFinale(splits[i]);
-       }
+        String relacion = getRelaciones().getText();
+        String[] splits = relacion.split(",");
+        Lista relations = new Lista();
+        if (getRelaciones().getText()!=""){
+            for (int i=0;i<splits.length;i++){
+                if (t2.leer_txt(getPath()).contains(splits[i].replace(" ",""))){
+                relations.insertFinale(splits[i].replace(" ",""));
+                }else{
+                    JOptionPane.showMessageDialog(null, "Algunos usuarios ingresados en las relaciones no estan registrados"+"\n"+nombre+" "+"ha sido registrado con las relaiones a ususarios existentes");
+                }
+            }
+        }
        setG(getG().insertUsuarioGrafo(nombre, relations));
        Txt t = new Txt();
        t.modificarTxt(getPath(), t.modifiarStringAdd(t.leer_txt(getPath()), nombre, relations));

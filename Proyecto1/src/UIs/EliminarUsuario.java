@@ -39,6 +39,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
         eliminar = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
         confirmacion = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +76,14 @@ public class EliminarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
-        getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 180, -1));
+
+        confirmacion.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 180, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Resultado");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 110, 20));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIs/FondoELiminar.jpeg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 410));
@@ -89,11 +97,17 @@ public class EliminarUsuario extends javax.swing.JFrame {
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         String name=TextEliminar.getText();
-        setG(getG().deleteVerticeGrafo(name));
         Txt t = new Txt();
+        if (t.leer_txt(getPath()).contains(name)){
+        setG(getG().deleteVerticeGrafo(name));
+        
         t.modificarTxt(getPath(), t.modificarStringd(t.leer_txt(getPath()),name));
         setG(getG().completarGrafo());
         confirmacion.setText("El usuario fue eliminado");
+        }else{
+            confirmacion.setText("El usuario no existe");
+            TextEliminar.setText("");
+        }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
@@ -146,6 +160,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel TituloEliminar;
     private javax.swing.JTextField confirmacion;
     private javax.swing.JButton eliminar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
