@@ -39,7 +39,6 @@ public class InterfazGeneral extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         TituloInterfazGeneral = new javax.swing.JLabel();
         CargarArchivoBut = new javax.swing.JButton();
-        ArchivoPrevioBut = new javax.swing.JButton();
         FondoInterfazGeneral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,19 +63,7 @@ public class InterfazGeneral extends javax.swing.JFrame {
                 CargarArchivoButActionPerformed(evt);
             }
         });
-        getContentPane().add(CargarArchivoBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 260, 110));
-
-        ArchivoPrevioBut.setBackground(new java.awt.Color(0, 0, 0));
-        ArchivoPrevioBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        ArchivoPrevioBut.setForeground(new java.awt.Color(255, 255, 255));
-        ArchivoPrevioBut.setText("Usar archivo previo");
-        ArchivoPrevioBut.setBorderPainted(false);
-        ArchivoPrevioBut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ArchivoPrevioButActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ArchivoPrevioBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 260, 110));
+        getContentPane().add(CargarArchivoBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 260, 110));
 
         FondoInterfazGeneral.setBackground(new java.awt.Color(51, 255, 51));
         FondoInterfazGeneral.setForeground(new java.awt.Color(0, 255, 0));
@@ -86,14 +73,16 @@ public class InterfazGeneral extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ArchivoPrevioButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchivoPrevioButActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ArchivoPrevioButActionPerformed
-
     private void CargarArchivoButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoButActionPerformed
         Txt t = new Txt();
         setPath(t.Seleccionar());
-        JOptionPane.showMessageDialog(null, "El archivo se leyó ");
+        if (t.leer_txt(getPath()).equals("")||!(t.leer_txt(getPath()).toLowerCase().contains("usuarios"))){
+            JOptionPane.showMessageDialog(null, "El archivo seleccionado no posee el formato correcto");
+            InterfazGeneral v = new InterfazGeneral();
+            v.setVisible(true);
+            v.dispose();
+        }else{
+        JOptionPane.showMessageDialog(null, "El archivo ha sido cargado en memoria"+"\n"+"Todos los cambios realizados se modificaran en el archivo");
         setG(new GrafoDefinitivo(t.ListaUsuarios(getPath())));
         setG(getG().completarGrafo());
         CargarArchivo ventanacargar = new CargarArchivo();
@@ -101,20 +90,7 @@ public class InterfazGeneral extends javax.swing.JFrame {
         ventanacargar.setG(getG());
         ventanacargar.setVisible(true);
         this.dispose();
-//        JFileChooser jFileChooser = new JFileChooser();
-//        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("TXT","txt");
-//        jFileChooser.setFileFilter(filtrado);
-//        
-//        int respuesta = jFileChooser.showOpenDialog(this);
-//        
-//        if (respuesta==JFileChooser.APPROVE_OPTION) {
-//            String Ruta = jFileChooser.getSelectedFile().getPath();
-//            JOptionPane.showMessageDialog(null, "El archivo se leyó ");
-//            this.setVisible(false);
-//            CargarArchivo ventanacargar = new CargarArchivo();
-//            ventanacargar.setVisible(true);
-//            
-//        }
+        }
     }//GEN-LAST:event_CargarArchivoButActionPerformed
 
     /**
@@ -153,7 +129,6 @@ public class InterfazGeneral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ArchivoPrevioBut;
     private javax.swing.JButton CargarArchivoBut;
     private javax.swing.JLabel FondoInterfazGeneral;
     private javax.swing.JLabel TituloInterfazGeneral;
